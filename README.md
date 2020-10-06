@@ -45,13 +45,9 @@ INSTALLED_APPS = [
 SHARED_SESSION_SITES = ['www.example.com', 'www.example.org']
 ```
 
-urls.py:
+Add the following to your project's urlpatterns in urls.py:
 ```py
-import shared_session
-
-urlpatterns = [
-    url(r'^shared-session/', shared_session.urls),  # feel free to change the base url
-]
+path('shared-session/', include('shared_session.urls', namespace='shared_session')),  # feel free to change the base url
 ```
 
 In order to share sessions with configured sites you also need to use `{% shared_session_loader %}` in your base template.
